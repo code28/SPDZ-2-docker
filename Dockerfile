@@ -1,3 +1,5 @@
+# Copyright (c) 2018 Simon Kempendorf
+
 FROM alpine
 
 # Add tools necessary for SPDZ-2 compiling
@@ -25,4 +27,3 @@ RUN make
 
 # Prepare environment to run SPDZ-2 with MPIR
 ENV LD_LIBRARY_PATH /usr/local/lib
-CMD []
