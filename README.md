@@ -29,6 +29,17 @@ Alternatively from Docker Hub:
 docker pull code28/spdz-2:insecure
 ```
 
+#### Change parameter `MAX_MOD_SZ`
+
+To use larger primes for the GF, you have to increase the parameter `MAX_MOD_SZ`, e.g. like this:
+```
+docker build --build-arg MAX_MOD_SZ=4 -t code28/spdz-2:mms4 .
+```
+
+This can be combined with the argument insecure and there is an image on Docker Hub:
+```
+docker pull code28/spdz-2:insecure_mms4
+```
 
 ## Usage
 

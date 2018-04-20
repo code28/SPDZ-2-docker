@@ -20,10 +20,14 @@ ADD SPDZ-2 /SPDZ-2
 
 # Allow build argument "insecure" to build with insecure flag
 ARG insecure=false
-RUN if "$insecure" != "false"; then echo "MY_CFLAGS= -DINSECURE" > CONFIG.mine; fi
+RUN if test "$insecure" != "false"; then echo "MY_CFLAGS= -DINSECURE" >> CONFIG.mine; fi
+
+ARG MAX_MOD_SZ=2
+RUN if test "$MAX_MOD_SZ" != "2"; then echo -n "MOD = -DMAX_MOD_SZ=" >> CONFIG.mine; echo $MAX_MOD_SZ >> CONFIG.mine; fi
 
 # Compile SPDZ-2
 RUN make
 
 # Prepare environment to run SPDZ-2 with MPIR
 ENV LD_LIBRARY_PATH /usr/local/lib
+CMD /bin/sh
